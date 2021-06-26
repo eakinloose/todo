@@ -1,8 +1,10 @@
 article{
   cursor: pointer;
   padding: 1rem;
-  background: green;
+  background: rgb(0, 77, 128);
   margin-top: 10px;
+  border-radius: 7px;
+  min-width: 450px;
 }
 p, h5{
   margin: 4px;
@@ -12,10 +14,11 @@ h1, footer{
   margin: 2rem;
 }
 form, main{
-  width: 60%;
+  width: 50%;
   margin: auto;
+  min-width: 450px;
 }
-main p{
+main p, main h5{
   color: white;
 }
 form{
