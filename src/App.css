@@ -15,6 +15,9 @@ form, main{
   width: 60%;
   margin: auto;
 }
+main p{
+  color: white;
+}
 form{
   text-align: center;
 }
