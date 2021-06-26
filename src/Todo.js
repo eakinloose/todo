@@ -3,7 +3,6 @@ import TodoList from './TodoList'
 
 const Todo = () => {
   const [todos, setTodos] = useState('')
-  const [todosCate, setTodosCate] = useState('')
   const [todoList, setTodoList] = useState([])
   const [edit, setEdit] = useState(false)
   const [editID, setEditID] = useState(null)
@@ -11,43 +10,32 @@ const Todo = () => {
   const handleSubmit = (e)=>{
     e.preventDefault()
 
-    if(!todos || !todosCate){
+    if(!todos){
       return;
     }
     else if(edit){
       setTodoList(todoList.map((item)=>{
         if(item.id === editID){
-          return {...item, title: todos, category: todosCate}
+          return {...item, title: todos}
         }
         return item 
       }))
       setTodos('')
-      setTodosCate('')
       setEdit(false)
       setEditID(null)
     }
     else{
       const newTodo = {
-      id: Math.floor(Math.random() * 999999999999999999999),
-      title: todos,
-      category: todosCate
+      id: Math.floor(Math.random() * 99999999999999),
+      title: todos
       }
       setTodoList([newTodo, ...todoList])
       setTodos('')
-      setTodosCate('')
     }
   }
 
   const removeTodo = (id) => {
     setTodoList(todoList.filter((items)=>items.id !== id))
-  }
-
-  const editTodoHandler = (id) => {
-    const itemToEdit = todoList.find(((items) => items.id === id))
-    setEdit(true)
-    setEditID(id)
-    setTodos(itemToEdit.title)
-    setTodosCate(itemToEdit.category)
   }
 
   const completeTodo = (id) => {
@@ -60,39 +48,31 @@ const Todo = () => {
     setTodoList(completedTodo)
   }
 
-  // const clearAllHandler =()=>{
-    
-  //   if (todoList.length < 1){
-  //     alert('Nothing to clear... list is empty')
-  //   }
-
-  //   setTodoList([])
-  // }
-
   return (
-    <section>
-      <h1>todos</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor='input'>add Todo</label>
-        <input id='input' placeholder='enter task' value={todos} onChange={(e)=>setTodos(e.target.value)}/>
-        <label htmlFor='input-cate'>Category</label>
-        <input id='input-cate' placeholder='category' value={todosCate} onChange={(e)=>setTodosCate(e.target.value)}/>
-        <button type="submit">{edit? 'Edit Todo' : 'Add Todo'}</button>
-      </form>
-      <main>
-        {todoList.length > 0 && (
-          <div className='list-sect'>
-            <TodoList items={todoList} removeTodo={removeTodo} completeTodo={completeTodo} editTodoHandler={editTodoHandler}/>
-          </div>
-        )}
-      </main>
-      <footer>
-        <p>Double-click to edit a todo</p>
-        <p>Created by Bobo</p>
-        <p>Part of TodoMVC</p>
-      </footer>
-      {/* <button onClick={clearAllHandler}>clear</button> */}
-    </section>
+    <div className="body">
+      <div className="side">
+        <h4>React</h4>
+        <p>Velit tempor mollit ut pariatur proident reprehenderit labore duis cupidatat sit. Fugiat nulla cillum anim aliquip amet excepteur irure laboris irure. In ut ut et enim excepteur sint ex et nisi amet.Nulla et consectetur do et. In do velit ea ex Lorem laboris dolor ullamco do laborum. Laborum nisi consequat cillum ad consequat deserunt dolore eiusmod esse non enim laborum anim pariatur. Reprehenderit labore est eiusmod exercitation deserunt laborum exercitation. Incididunt non enim labore ex officia voluptate dolor consequat eiusmod ad culpa eu ex voluptate. Consequat duis nisi excepteur laboris laboris id adipisicing id in. Cupidatat duis mollit amet irure labore exercitation amet reprehenderit laboris nostrud.Do nulla consequat cupidatat consectetur irure culpa labore commodo est. Nisi consectetur magna Lorem anim irure id reprehenderit eu deserunt ipsum anim aliquip. Cillum velit officia incididunt ea. Esse aute non voluptate in ipsum ullamco qui reprehenderit. Nulla cillum non cillum Lorem officia mollit commodo elit minim exercitation reprehenderit deserunt ea elit. Deserunt amet non duis ut esse ipsum ad do cillum consequat aliqua minim laborum dolor.Adipisicing cillum nisi nulla consectetur ipsum amet consequat velit ad. Duis duis non nisi et irure aute. Aliqua qui magna quis fugiat. Eu excepteur non dolor esse adipisicing. Minim consectetur reprehenderit cillum exercitation labore cupidatat elit ad ex ut minim est consectetur. Tempor sint elit est tempor aliquip. Voluptate commodo dolor proident adipisicing sit incididunt non nisi adipisicing est aliqua excepteur.</p>
+      </div>
+      <section>
+        <h1>todos</h1>
+        <form onSubmit={handleSubmit}>
+          <input placeholder='What needs to be done?' value={todos} onChange={(e)=>setTodos(e.target.value)}/>
+        </form>
+        <main>
+          {todoList.length > 0 && (
+            <div className='list-sect'>
+              <TodoList items={todoList} removeTodo={removeTodo} completeTodo={completeTodo} setTodoList={setTodoList}/>
+            </div>
+          )}
+        </main>
+        <footer>
+          <p>Double-click to edit a todo</p>
+          <p>Created by Bobo</p>
+          <p>Part of TodoMVC</p>
+        </footer>
+      </section>
+    </div>
   )
 }
 

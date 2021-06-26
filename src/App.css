@@ -1,29 +1,97 @@
+*{
+  box-sizing: border-box;
+  margin: 0px;
+}
+.body{
+  display: grid;
+  grid-template-columns: repeat(5 ,1fr);
+  background:#eee;
+}
+.side{
+  grid-column: 1/2;
+  max-width: 200px;
+  background: rgb(244, 245, 239);;
+  height: 100vh;
+  overflow: auto;
+  padding: 50px 10px;
+}
+.side p{
+  font-size: 13px;
+}
+section{
+  grid-column: 2/6;
+  justify-items: center;
+}
+h1{
+  font-size: 80px;
+  color:rgba(255, 99, 71, 0.192);
+  font-weight: 100;
+  margin-top: 2rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
 article{
+  display: flex;
+  justify-content: space-between;
   cursor: pointer;
-  padding: 1rem;
-  background: rgb(0, 77, 128);
-  margin-top: 10px;
+  padding: 5px 0.7rem;
+  background: rgba(255, 99, 71, 0.192);;
+  margin: 10px auto;
   border-radius: 7px;
-  min-width: 450px;
+  min-width: 320px;
+  max-width: 600px;
+  width: 55%;
+}
+form{
+  min-width: 320px;
+  max-width: 600px;
+  width: 55%;
+  margin: auto;
+}
+input{
+  padding: 15px;
+  width: 100%;
+  border: none;
+  box-shadow: 0px 0.5px 5px rgb(66, 64, 64);
+}
+button{
+  border: none;
+  background: rgba(2, 61, 85, 0.733);
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  border: none;
+  margin-left: 4px;
+  padding: 5px;
+  font-size: 11px;
+}
+article div{
+  display: flex;
+}
+article input{
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 2px
+}
+input:focus{
+  outline: none;
 }
 p, h5{
   margin: 4px;
 }
-h1, footer{
+footer{
   text-align: center;
-  margin: 2rem;
-}
-form, main{
-  width: 50%;
-  margin: auto;
-  min-width: 450px;
+  margin: 4rem;
+  color: rgba(128, 128, 128, 0.87);
+  font-size: 11px;
 }
 main p, main h5{
   color: white;
 }
-form{
-  text-align: center;
-}
 .complete{
+  background: rgba(206, 51, 51, 0.705);
+  color: rgb(196, 162, 162);
+}
+.complete input{
   text-decoration: line-through;
 }
