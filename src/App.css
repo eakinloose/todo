@@ -1,0 +1,23 @@
+article{
+  cursor: pointer;
+  padding: 1rem;
+  background: green;
+  margin-top: 10px;
+}
+p, h5{
+  margin: 4px;
+}
+h1, footer{
+  text-align: center;
+  margin: 2rem;
+}
+form, main{
+  width: 60%;
+  margin: auto;
+}
+form{
+  text-align: center;
+}
+.complete{
+  text-decoration: line-through;
+}
