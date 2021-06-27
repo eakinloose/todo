@@ -35,6 +35,7 @@ article{
   justify-content: space-between;
   cursor: pointer;
   padding: 5px 0.7rem;
+  color:teal;
   background: rgba(255, 99, 71, 0.192);;
   margin: 10px auto;
   border-radius: 7px;

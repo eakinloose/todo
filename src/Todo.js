@@ -1,9 +1,19 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import TodoList from './TodoList'
+
+const getLocalStorage = ()=> {
+  let todoList = localStorage.getItem('todoList');
+  if(todoList){
+    return JSON.parse(todoList)
+  }
+  else{
+    return []
+  }
+}
 
 const Todo = () => {
   const [todos, setTodos] = useState('')
-  const [todoList, setTodoList] = useState([])
+  const [todoList, setTodoList] = useState(getLocalStorage())
   const [edit, setEdit] = useState(false)
   const [editID, setEditID] = useState(null)
 
@@ -47,6 +57,10 @@ const Todo = () => {
     })
     setTodoList(completedTodo)
   }
+
+  useEffect(()=>{
+    localStorage.setItem('todoList', JSON.stringify(todoList))
+  }, [todoList])
 
   return (
     <div className="body">
