@@ -1,11 +1,14 @@
 *{
   box-sizing: border-box;
   margin: 0px;
+  
+}
+body{
+  background:#eee;
 }
 .body{
   display: grid;
   grid-template-columns: repeat(5 ,1fr);
-  background:#eee;
 }
 .side{
   grid-column: 1/2;
@@ -36,12 +39,12 @@ article{
   cursor: pointer;
   padding: 5px 0.7rem;
   color:teal;
-  background: rgba(255, 99, 71, 0.192);;
+  background: rgba(235, 117, 96, 0.192);;
   margin: 10px auto;
-  border-radius: 7px;
   min-width: 320px;
   max-width: 600px;
   width: 55%;
+  box-shadow: 0px 0.2px 1px black;
 }
 form{
   min-width: 320px;
@@ -64,6 +67,10 @@ button{
   margin-left: 4px;
   padding: 5px;
   font-size: 11px;
+  height: 20px;
+  bottom: 0;
+  align-self: center;
+  border-radius: 4px;
 }
 article div{
   display: flex;
@@ -95,4 +102,14 @@ main p, main h5{
 }
 .complete input{
   text-decoration: line-through;
+}
+
+@media screen and (max-width: 750px){
+  .side{
+    display: none;
+  }
+  .body{
+    display: block;
+  }
+  
 }
